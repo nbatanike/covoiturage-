@@ -1,11 +1,11 @@
 /*****************************
- * MENU HAMBURGER MOBILE
+ * MENU MOBILE
  *****************************/
-const mobileMenu = document.getElementById("mobile-menu");
-const navList = document.querySelector(".nav-list");
-if(mobileMenu){
-    mobileMenu.addEventListener("click", () => {
-        navList.classList.toggle("active");
+const menuToggle = document.getElementById('mobile-menu');
+const navList = document.querySelector('.nav-list');
+if(menuToggle){
+    menuToggle.addEventListener('click', ()=>{
+        navList.classList.toggle('active');
     });
 }
 
@@ -16,32 +16,22 @@ const formInscription = document.getElementById("formInscription");
 if (formInscription) {
     formInscription.addEventListener("submit", function(e){
         e.preventDefault();
-        const photoInput = document.getElementById("photo");
-        const reader = new FileReader();
-        reader.onload = function() {
-            const utilisateur = {
-                nom: document.getElementById("nom").value,
-                prenom: document.getElementById("prenom").value,
-                ville: document.getElementById("ville").value,
-                telephone: document.getElementById("telephone").value,
-                email: document.getElementById("email").value,
-                ni: document.getElementById("ni").value,
-                code: document.getElementById("code").value,
-                photo: reader.result
-            };
-            let utilisateurs = JSON.parse(localStorage.getItem("utilisateurs")) || [];
-            const existe = utilisateurs.find(u => u.email === utilisateur.email);
-            if (existe) { alert("Email déjà utilisé."); return; }
-            utilisateurs.push(utilisateur);
-            localStorage.setItem("utilisateurs", JSON.stringify(utilisateurs));
-            alert("Inscription réussie !");
-            window.location.href = "connexion.html";
+        const utilisateur = {
+            nom: document.getElementById("nom").value,
+            prenom: document.getElementById("prenom").value,
+            ville: document.getElementById("ville").value,
+            telephone: document.getElementById("telephone").value,
+            email: document.getElementById("email").value,
+            ni: document.getElementById("ni").value,
+            code: document.getElementById("code").value
         };
-        if(photoInput.files.length){
-            reader.readAsDataURL(photoInput.files[0]);
-        } else {
-            reader.onload();
-        }
+        let utilisateurs = JSON.parse(localStorage.getItem("utilisateurs")) || [];
+        const existe = utilisateurs.find(u => u.email === utilisateur.email);
+        if (existe) { alert("Email déjà utilisé."); return; }
+        utilisateurs.push(utilisateur);
+        localStorage.setItem("utilisateurs", JSON.stringify(utilisateurs));
+        alert("Inscription réussie !");
+        window.location.href = "./connexion.html";
     });
 }
 
@@ -59,7 +49,7 @@ if (formConnexion) {
         if(!utilisateur){ alert("Email ou code incorrect."); return; }
         localStorage.setItem("utilisateurConnecte", JSON.stringify(utilisateur));
         alert("Connexion réussie !");
-        window.location.href = "index.html";
+        window.location.href = "./index.html";
     });
 }
 
@@ -70,8 +60,6 @@ const formTrajet = document.getElementById("formTrajet");
 if(formTrajet){
     formTrajet.addEventListener("submit", function(e){
         e.preventDefault();
-        const utilisateurConnecte = JSON.parse(localStorage.getItem("utilisateurConnecte"));
-        if(!utilisateurConnecte){ alert("Veuillez vous connecter d'abord."); return; }
         const trajet = {
             depart: document.getElementById("depart").value,
             arrivee: document.getElementById("arrivee").value,
@@ -79,14 +67,13 @@ if(formTrajet){
             heure: document.getElementById("heure").value,
             rendezvous: document.getElementById("rendezvous").value,
             whatsapp: document.getElementById("whatsapp").value,
-            montant: document.getElementById("montant").value,
-            photo: utilisateurConnecte.photo || ""
+            montant: document.getElementById("montant").value
         };
         let trajets = JSON.parse(localStorage.getItem("trajets")) || [];
         trajets.push(trajet);
         localStorage.setItem("trajets", JSON.stringify(trajets));
         alert("Trajet publié !");
-        window.location.href = "liste-trajets.html";
+        window.location.href = "./liste-trajets.html";
     });
 }
 
@@ -96,13 +83,13 @@ if(formTrajet){
 const listeTrajetsDiv = document.getElementById("listeTrajets");
 if(listeTrajetsDiv){
     let trajets = JSON.parse(localStorage.getItem("trajets")) || [];
-    if(trajets.length===0){ listeTrajetsDiv.innerHTML="<p>Aucun trajet publié.</p>"; }
-    else{
+    if(trajets.length===0){ 
+        listeTrajetsDiv.innerHTML="<p>Aucun trajet publié.</p>"; 
+    } else {
         trajets.forEach(t=>{
             const div = document.createElement("div");
             div.classList.add("carte");
             div.innerHTML=`
-                ${t.photo ? `<img src="${t.photo}" class="miniature">` : ''}
                 <p><strong>Départ :</strong> ${t.depart}</p>
                 <p><strong>Arrivée :</strong> ${t.arrivee}</p>
                 <p><strong>Date :</strong> ${t.dateDepart}</p>
@@ -132,7 +119,6 @@ if(btnRecherche){
                 const div = document.createElement("div");
                 div.classList.add("carte");
                 div.innerHTML=`
-                    ${t.photo ? `<img src="${t.photo}" class="miniature">` : ''}
                     <p><strong>Départ :</strong> ${t.depart}</p>
                     <p><strong>Arrivée :</strong> ${t.arrivee}</p>
                     <p><strong>Date :</strong> ${t.dateDepart}</p>
@@ -154,15 +140,16 @@ const listeAvisDiv = document.getElementById("listeAvis");
 
 function afficherAvis(){
     let avis = JSON.parse(localStorage.getItem("avis")) || [];
-    listeAvisDiv.innerHTML="";
-    avis.forEach(a=>{
-        const div=document.createElement("div");
-        div.classList.add("carte");
-        div.innerHTML=`<p><strong>${a.nom} :</strong> ${a.message}</p>`;
-        listeAvisDiv.appendChild(div);
-    });
+    if(listeAvisDiv) {
+        listeAvisDiv.innerHTML="";
+        avis.forEach(a=>{
+            const div=document.createElement("div");
+            div.classList.add("carte");
+            div.innerHTML=`<p><strong>${a.nom} :</strong> ${a.message}</p>`;
+            listeAvisDiv.appendChild(div);
+        });
+    }
 }
-if(listeAvisDiv) afficherAvis();
 if(formAvis){
     formAvis.addEventListener("submit", function(e){
         e.preventDefault();
@@ -177,3 +164,4 @@ if(formAvis){
         afficherAvis();
     });
 }
+if(listeAvisDiv) afficherAvis();

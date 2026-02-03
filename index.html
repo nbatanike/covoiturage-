@@ -2,54 +2,48 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Covoiturage+</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
 <header>
-    <h1>Covoiturage+ 🚘</h1>
     <nav>
-        <div class="menu-toggle" id="mobile-menu">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-        </div>
-        <ul class="nav-list">
-            <li><a href="index.html">Accueil</a></li>
-            <li><a href="inscription.html" class="btn">S'inscrire</a></li>
-            <li><a href="connexion.html" class="btn">Se connecter</a></li>
-            <li><a href="publier-trajet.html">Publier un trajet</a></li>
-            <li><a href="liste-trajets.html">Trajets</a></li>
-            <li><a href="recherche.html">Recherche</a></li>
-        </ul>
+      <div class="menu-toggle" id="mobile-menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+      <ul class="nav-list">
+        <li><a href="./index.html">Accueil</a></li>
+        <li><a href="./publier-trajet.html">Publier un trajet</a></li>
+        <li><a href="./liste-trajets.html">Liste des trajets</a></li>
+        <li><a href="./recherche.html">Recherche</a></li>
+        <li><a href="./connexion.html">Se connecter</a></li>
+        <li><a href="./inscription.html">S'inscrire</a></li>
+      </ul>
     </nav>
 </header>
 
 <main>
-    <section>
-        <h2>Bienvenue sur Covoiturage+</h2>
-        <p>Économisez sur vos déplacements, rencontrez de nouvelles personnes et réduisez votre empreinte carbone.</p>
-        <img src="images/demo-covoiturage.jpg" alt="Covoiturage" class="image-demo">
-    </section>
+    <h1>Bienvenue sur Covoiturage+ 🚘</h1>
+    <p>Économisez, rencontrez de nouvelles personnes et réduisez votre empreinte carbone.</p>
+    <img src="./images/demo-covoiturage.jpg" class="image-demo">
+    <h2>Qu'est-ce que le covoiturage ?</h2>
+    <p>Le covoiturage est le partage d'un trajet en voiture entre plusieurs personnes...</p>
 
-    <section>
-        <h2>Avis des visiteurs</h2>
-        <form id="formAvis">
-            <label for="nomAvis">Nom :</label>
-            <input type="text" id="nomAvis" required>
-            <label for="messageAvis">Message :</label>
-            <textarea id="messageAvis" rows="3" required></textarea>
-            <button type="submit">Envoyer</button>
-        </form>
-        <div id="listeAvis"></div>
-    </section>
+    <h2>Donnez votre avis :</h2>
+    <form id="formAvis">
+        <input type="text" id="nomAvis" placeholder="Votre nom" required>
+        <textarea id="messageAvis" placeholder="Votre avis" required></textarea>
+        <button type="submit">Envoyer</button>
+    </form>
+    <div id="listeAvis"></div>
 </main>
 
 <footer>
-    © 2026 Covoiturage+ | Contact: info@covoiturageplus.com
+    <p>© 2026 Covoiturage+. Tous droits réservés.</p>
 </footer>
 
-<script src="js/app.js"></script>
+<script src="./js/app.js"></script>
 </body>
 </html>

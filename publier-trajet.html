@@ -2,55 +2,46 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Publier un trajet - Covoiturage+</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
 <header>
-    <h1>Covoiturage+ 🚘</h1>
     <nav>
-        <div class="menu-toggle" id="mobile-menu">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-        </div>
-        <ul class="nav-list">
-            <li><a href="index.html">Accueil</a></li>
-            <li><a href="inscription.html" class="btn">S'inscrire</a></li>
-            <li><a href="connexion.html" class="btn">Se connecter</a></li>
-            <li><a href="publier-trajet.html">Publier un trajet</a></li>
-            <li><a href="liste-trajets.html">Trajets</a></li>
-            <li><a href="recherche.html">Recherche</a></li>
-        </ul>
+      <div class="menu-toggle" id="mobile-menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+      <ul class="nav-list">
+        <li><a href="./index.html">Accueil</a></li>
+        <li><a href="./publier-trajet.html">Publier un trajet</a></li>
+        <li><a href="./liste-trajets.html">Liste des trajets</a></li>
+        <li><a href="./recherche.html">Recherche</a></li>
+        <li><a href="./connexion.html">Se connecter</a></li>
+        <li><a href="./inscription.html">S'inscrire</a></li>
+      </ul>
     </nav>
 </header>
 
 <main>
+    <h1>Publier un trajet</h1>
     <form id="formTrajet">
-        <h2>Publier un trajet</h2>
-        <label>Ville de départ :</label>
-        <input type="text" id="depart" required>
-        <label>Ville d'arrivée :</label>
-        <input type="text" id="arrivee" required>
-        <label>Date de départ :</label>
+        <input type="text" id="depart" placeholder="Ville de départ" required>
+        <input type="text" id="arrivee" placeholder="Ville d'arrivée" required>
         <input type="date" id="dateDepart" required>
-        <label>Heure de départ :</label>
         <input type="time" id="heure" required>
-        <label>Lieu de rendez-vous :</label>
-        <input type="text" id="rendezvous" required>
-        <label>Numéro WhatsApp :</label>
-        <input type="text" id="whatsapp" required>
-        <label>Montant à contribuer (FCFA) :</label>
-        <input type="number" id="montant" required>
+        <input type="text" id="rendezvous" placeholder="Lieu de rendez-vous" required>
+        <input type="text" id="whatsapp" placeholder="Numéro WhatsApp" required>
+        <input type="number" id="montant" placeholder="Montant à contribuer" required>
         <button type="submit">Publier</button>
     </form>
 </main>
 
 <footer>
-    © 2026 Covoiturage+ | Contact: info@covoiturageplus.com
+    <p>© 2026 Covoiturage+. Tous droits réservés.</p>
 </footer>
 
-<script src="js/app.js"></script>
+<script src="./js/app.js"></script>
 </body>
 </html>
