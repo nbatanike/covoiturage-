@@ -1,138 +1,245 @@
-/* Styles généraux */
+/* ===============================
+   RESET & BASE
+================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    margin:0;
-    padding:0;
-    background: #f4f4f4;
+  background: #f4f6f8;
+  color: #333;
+  line-height: 1.6;
 }
 
-.menu {
-    background: #007bff;
-    color: white;
-    padding: 10px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+/* ===============================
+   HEADER & MENU
+================================ */
+header {
+  background: #0a58ca;
+  color: white;
+  padding: 15px 20px;
 }
 
-.menu h1 {
-    margin: 0;
+header h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
 }
 
-.menu ul {
-    display: flex;
-    list-style: none;
-    gap: 15px;
-    margin: 0;
-    padding: 0;
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
-.menu ul li a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
+nav a {
+  color: white;
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  background: rgba(255,255,255,0.15);
+  transition: 0.3s;
 }
 
-.menu ul li a:hover {
-    text-decoration: underline;
+nav a:hover {
+  background: white;
+  color: #0a58ca;
 }
 
+/* ===============================
+   BOUTONS
+================================ */
+.btn {
+  display: inline-block;
+  background: #198754;
+  color: white;
+  padding: 10px 18px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  margin: 5px 0;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #146c43;
+}
+
+/* ===============================
+   CONTENU PRINCIPAL
+================================ */
 main {
-    padding: 20px;
+  padding: 20px;
+  max-width: 1100px;
+  margin: auto;
 }
 
-.formulaire, .avis {
-    background: white;
-    max-width: 600px;
-    margin: 20px auto;
-    padding: 20px;
-    border-radius: 10px;
+section {
+  margin-bottom: 30px;
 }
 
-.formulaire input, .formulaire textarea, .avis input, .avis textarea {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
+/* ===============================
+   CARTES (TRAJETS, AVIS)
+================================ */
+.carte {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  margin-bottom: 15px;
 }
 
-.formulaire button, .avis button {
-    width: 100%;
-    margin-top: 15px;
-    padding: 12px;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    cursor: pointer;
+.carte p {
+  margin-bottom: 6px;
 }
 
-.formulaire button { background: #007bff; color: white; }
-.formulaire button:hover { background: #0056b3; }
-
-.avis button { background: #28a745; color: white; }
-.avis button:hover { background: #218838; }
-
-.trajets {
-    max-width: 800px;
-    margin: 20px auto;
+/* ===============================
+   FORMULAIRES
+================================ */
+form {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  max-width: 500px;
+  margin: auto;
 }
 
-.trajets .carte, #listeAvis .carte {
-    background: #e8f0fe;
+form h2 {
+  margin-bottom: 15px;
+  text-align: center;
+  color: #0a58ca;
+}
+
+label {
+  display: block;
+  margin-top: 12px;
+  font-weight: bold;
+}
+
+input, textarea, select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: #0a58ca;
+}
+
+button {
+  margin-top: 20px;
+  width: 100%;
+  padding: 12px;
+  background: #0a58ca;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #084298;
+}
+
+/* ===============================
+   AVIS VISITEURS
+================================ */
+#listeAvis .carte {
+  border-left: 5px solid #198754;
+}
+
+/* ===============================
+   FOOTER
+================================ */
+footer {
+  background: #212529;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  margin-top: 40px;
+}
+
+/* ===============================
+   RESPONSIVE (MOBILE)
+================================ */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+  }
+
+  header h1 {
+    text-align: center;
+  }
+
+  main {
     padding: 15px;
-    border-radius: 10px;
-    margin-bottom: 15px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+}
+/* ===============================
+   MENU HAMBURGER
+================================ */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
 }
 
-/* Responsive */
-@media screen and (max-width: 768px) {
-    .menu ul { flex-direction: column; gap: 10px; }
-    .formulaire, .avis { margin: 15px; padding: 15px; }
+.menu-toggle .bar {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  border-radius: 2px;
 }
-/* Images illustration */
-.images-illustration {
+
+.nav-list {
+  display: flex;
+  gap: 10px;
+  list-style: none;
+}
+
+.nav-list li a {
+  display: block;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .menu-toggle {
     display: flex;
-    gap: 10px;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-top: 15px;
-}
+  }
 
-.images-illustration img {
-    width: 250px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    transition: transform 0.3s;
-}
+  .nav-list {
+    position: absolute;
+    top: 60px;
+    left: -100%;
+    width: 100%;
+    flex-direction: column;
+    background-color: #0a58ca;
+    transition: 0.3s;
+  }
 
-.images-illustration img:hover {
-    transform: scale(1.05);
-}
+  .nav-list.active {
+    left: 0;
+  }
 
-/* Dégradé pour header */
-.menu {
-    background: linear-gradient(90deg, #007bff, #00c6ff);
+  .nav-list li {
+    text-align: center;
+    margin: 10px 0;
+  }
 }
-
-/* Cartes trajets et avis modernisées */
-.trajets .carte, #listeAvis .carte {
-    background: #ffffff;
-    border-left: 5px solid #007bff;
-    padding: 20px;
-    border-radius: 12px;
-    margin-bottom: 20px;
-    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.trajets .carte:hover, #listeAvis .carte:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
-}
-@media screen and (max-width: 768px) {
-    .images-illustration img { width: 100%; max-width: 300px; }
-    .menu ul { flex-direction: column; gap: 10px; text-align: center; }
-    .formulaire, .avis { padding: 15px; margin: 10px; }
+.miniature {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    float: right;
+    margin-left: 10px;
 }

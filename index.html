@@ -11,19 +11,22 @@
 <body>
 
 <header>
-    <nav class="menu">
-        <h1>Covoiturage + 🚘</h1>
-        <ul>
-            <a href="inscription.html" class="btn">S'inscrire</a>
-            <a href="connexion.html" class="btn">Se connecter</a>
-    <li><a href="index.html"><i class="fas fa-home"></i> Accueil</a></li>
-    <li><a href="publier-trajet.html"><i class="fas fa-plus-circle"></i> Publier un trajet</a></li>
-    <li><a href="liste-trajets.html"><i class="fas fa-list"></i> Liste des trajets</a></li>
-    <li><a href="rechercher.html"><i class="fas fa-search"></i> Recherche trajet</a></li>
-    <li><a href="index.html" id="deconnexion"><i class="fas fa-sign-out-alt"></i> Déconnexion</a></li>
-</ul>
+    <nav>
+  <div class="menu-toggle" id="mobile-menu">
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
+  </div>
+  <ul class="nav-list">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="inscription.html" class="btn">S'inscrire</a></li>
+    <li><a href="connexion.html" class="btn">Se connecter</a></li>
+    <li><a href="publier-trajet.html">Publier un trajet</a></li>
+    <li><a href="liste-trajets.html">Trajets</a></li>
+    <li><a href="recherche.html">Recherche</a></li>
+  </ul>
+</nav>
 
-    </nav>
 </header>
 
 <main>
@@ -46,6 +49,8 @@
             <button type="submit">Envoyer</button>
         </form>
         <div id="listeAvis" style="margin-top:20px;"></div>
+        <div id="bonjourUser"></div>
+
     </section>
 </main>
 
