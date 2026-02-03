@@ -1,79 +1,49 @@
-// Afficher le nom de l'utilisateur connecté
-const bonjourUser = document.getElementById("bonjourUser");
-const utilisateurConnecte = JSON.parse(localStorage.getItem("utilisateurConnecte"));
-if (bonjourUser && utilisateurConnecte) {
-    bonjourUser.innerHTML = `Bonjour, ${utilisateurConnecte.prenom} !`;
+/*****************************
+ * MENU HAMBURGER MOBILE
+ *****************************/
+const mobileMenu = document.getElementById("mobile-menu");
+const navList = document.querySelector(".nav-list");
+if(mobileMenu){
+    mobileMenu.addEventListener("click", () => {
+        navList.classList.toggle("active");
+    });
 }
 
-
-// ===============================
-// VERIFICATION DE CONNEXION
-// ===============================
-function verifierConnexion() {
-    const utilisateurConnecte = JSON.parse(localStorage.getItem("utilisateurConnecte"));
-    if (!utilisateurConnecte) {
-        alert("Vous devez être connecté pour accéder à cette page !");
-        window.location.href = "connexion.html";
-    }
+/*****************************
+ * INSCRIPTION UTILISATEUR
+ *****************************/
+const formInscription = document.getElementById("formInscription");
+if (formInscription) {
+    formInscription.addEventListener("submit", function(e){
+        e.preventDefault();
+        const photoInput = document.getElementById("photo");
+        const reader = new FileReader();
+        reader.onload = function() {
+            const utilisateur = {
+                nom: document.getElementById("nom").value,
+                prenom: document.getElementById("prenom").value,
+                ville: document.getElementById("ville").value,
+                telephone: document.getElementById("telephone").value,
+                email: document.getElementById("email").value,
+                ni: document.getElementById("ni").value,
+                code: document.getElementById("code").value,
+                photo: reader.result
+            };
+            let utilisateurs = JSON.parse(localStorage.getItem("utilisateurs")) || [];
+            const existe = utilisateurs.find(u => u.email === utilisateur.email);
+            if (existe) { alert("Email déjà utilisé."); return; }
+            utilisateurs.push(utilisateur);
+            localStorage.setItem("utilisateurs", JSON.stringify(utilisateurs));
+            alert("Inscription réussie !");
+            window.location.href = "connexion.html";
+        };
+        if(photoInput.files.length){
+            reader.readAsDataURL(photoInput.files[0]);
+        } else {
+            reader.onload();
+        }
+    });
 }
-
-// Pages à sécuriser
-const pagesProtegees = ["publier-trajet.html", "liste-trajets.html", "recherche.html"];
-const pageActuelle = window.location.pathname.split("/").pop();
-
-if (pagesProtegees.includes(pageActuelle)) {
-    verifierConnexion();
-}
-
-
-const photoInput = document.getElementById("photo");
-const reader = new FileReader();
-
-reader.onload = function() {
-    const utilisateur = {
-        nom: document.getElementById("nom").value,
-        prenom: document.getElementById("prenom").value,
-        ville: document.getElementById("ville").value,
-        telephone: document.getElementById("telephone").value,
-        email: document.getElementById("email").value,
-        ni: document.getElementById("ni").value,
-        code: document.getElementById("code").value,
-        photo: reader.result  // Stockage en base64
-    };
-
-    let utilisateurs = JSON.parse(localStorage.getItem("utilisateurs")) || [];
-    const existe = utilisateurs.find(u => u.email === utilisateur.email);
-    if (existe) { alert("Email déjà utilisé."); return; }
-    utilisateurs.push(utilisateur);
-    localStorage.setItem("utilisateurs", JSON.stringify(utilisateurs));
-    alert("Inscription réussie !");
-    window.location.href = "connexion.html";
-};
-
-if(photoInput.files.length) {
-    reader.readAsDataURL(photoInput.files[0]);
-} else {
-    // Si pas de photo, continuer sans image
-    const utilisateur = {
-        nom: document.getElementById("nom").value,
-        prenom: document.getElementById("prenom").value,
-        ville: document.getElementById("ville").value,
-        telephone: document.getElementById("telephone").value,
-        email: document.getElementById("email").value,
-        ni: document.getElementById("ni").value,
-        code: document.getElementById("code").value,
-        photo: ""  // pas d'image
-    };
-
-    let utilisateurs = JSON.parse(localStorage.getItem("utilisateurs")) || [];
-    const existe = utilisateurs.find(u => u.email === utilisateur.email);
-    if (existe) { alert("Email déjà utilisé."); return; }
-    utilisateurs.push(utilisateur);
-    localStorage.setItem("utilisateurs", JSON.stringify(utilisateurs));
-    alert("Inscription réussie !");
-    window.location.href = "connexion.html";
-}
-
 
 /*****************************
  * CONNEXION UTILISATEUR
@@ -100,6 +70,8 @@ const formTrajet = document.getElementById("formTrajet");
 if(formTrajet){
     formTrajet.addEventListener("submit", function(e){
         e.preventDefault();
+        const utilisateurConnecte = JSON.parse(localStorage.getItem("utilisateurConnecte"));
+        if(!utilisateurConnecte){ alert("Veuillez vous connecter d'abord."); return; }
         const trajet = {
             depart: document.getElementById("depart").value,
             arrivee: document.getElementById("arrivee").value,
@@ -107,7 +79,8 @@ if(formTrajet){
             heure: document.getElementById("heure").value,
             rendezvous: document.getElementById("rendezvous").value,
             whatsapp: document.getElementById("whatsapp").value,
-            montant: document.getElementById("montant").value
+            montant: document.getElementById("montant").value,
+            photo: utilisateurConnecte.photo || ""
         };
         let trajets = JSON.parse(localStorage.getItem("trajets")) || [];
         trajets.push(trajet);
@@ -129,6 +102,7 @@ if(listeTrajetsDiv){
             const div = document.createElement("div");
             div.classList.add("carte");
             div.innerHTML=`
+                ${t.photo ? `<img src="${t.photo}" class="miniature">` : ''}
                 <p><strong>Départ :</strong> ${t.depart}</p>
                 <p><strong>Arrivée :</strong> ${t.arrivee}</p>
                 <p><strong>Date :</strong> ${t.dateDepart}</p>
@@ -139,17 +113,6 @@ if(listeTrajetsDiv){
             listeTrajetsDiv.appendChild(div);
         });
     }
-    // Lors de l'affichage d'un trajet
-div.innerHTML=`
-    ${t.photo ? `<img src="${t.photo}" alt="Profil" class="miniature">` : ''}
-    <p><strong>Départ :</strong> ${t.depart}</p>
-    <p><strong>Arrivée :</strong> ${t.arrivee}</p>
-    <p><strong>Date :</strong> ${t.dateDepart}</p>
-    <p><strong>Heure :</strong> ${t.heure}</p>
-    <p><strong>Rendez-vous :</strong> ${t.rendezvous}</p>
-    <p><strong>WhatsApp :</strong> ${t.whatsapp}</p>
-    <p><strong>Montant :</strong> ${t.montant} FCFA</p>`;
-
 }
 
 /*****************************
@@ -169,6 +132,7 @@ if(btnRecherche){
                 const div = document.createElement("div");
                 div.classList.add("carte");
                 div.innerHTML=`
+                    ${t.photo ? `<img src="${t.photo}" class="miniature">` : ''}
                     <p><strong>Départ :</strong> ${t.depart}</p>
                     <p><strong>Arrivée :</strong> ${t.arrivee}</p>
                     <p><strong>Date :</strong> ${t.dateDepart}</p>
@@ -198,9 +162,7 @@ function afficherAvis(){
         listeAvisDiv.appendChild(div);
     });
 }
-
 if(listeAvisDiv) afficherAvis();
-
 if(formAvis){
     formAvis.addEventListener("submit", function(e){
         e.preventDefault();
@@ -214,13 +176,4 @@ if(formAvis){
         formAvis.reset();
         afficherAvis();
     });
-}
-// MENU HAMBURGER MOBILE
-const mobileMenu = document.getElementById("mobile-menu");
-const navList = document.querySelector(".nav-list");
-
-if (mobileMenu) {
-  mobileMenu.addEventListener("click", () => {
-    navList.classList.toggle("active");
-  });
 }

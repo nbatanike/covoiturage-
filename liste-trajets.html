@@ -2,34 +2,38 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Liste des trajets - Covoiturage +</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des trajets - Covoiturage+</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
 </head>
 <body>
-
 <header>
-    <nav class="menu">
-        <h1>Covoiturage + 🚘</h1>
-        <ul>
-    <li><a href="index.html"><i class="fas fa-home"></i> Accueil</a></li>
-    <li><a href="publier-trajet.html"><i class="fas fa-plus-circle"></i> Publier un trajet</a></li>
-    <li><a href="liste-trajets.html"><i class="fas fa-list"></i> Liste des trajets</a></li>
-    <li><a href="rechercher.html"><i class="fas fa-search"></i> Recherche trajet</a></li>
-    <li><a href="index.html" id="deconnexion"><i class="fas fa-sign-out-alt"></i> Déconnexion</a></li>
-</ul>
-
+    <h1>Covoiturage+ 🚘</h1>
+    <nav>
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <ul class="nav-list">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="inscription.html" class="btn">S'inscrire</a></li>
+            <li><a href="connexion.html" class="btn">Se connecter</a></li>
+            <li><a href="publier-trajet.html">Publier un trajet</a></li>
+            <li><a href="liste-trajets.html">Trajets</a></li>
+            <li><a href="recherche.html">Recherche</a></li>
+        </ul>
     </nav>
 </header>
 
 <main>
-    <section class="trajets">
-        <h2>Liste des trajets</h2>
-        <div id="listeTrajets"></div>
-    </section>
+    <h2>Liste des trajets publiés</h2>
+    <div id="listeTrajets"></div>
 </main>
+
+<footer>
+    © 2026 Covoiturage+ | Contact: info@covoiturageplus.com
+</footer>
 
 <script src="js/app.js"></script>
 </body>

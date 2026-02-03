@@ -1,240 +1,126 @@
-/* ===============================
-   RESET & BASE
-================================ */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Segoe UI", Arial, sans-serif;
-}
-
+/* =============================
+   GENERAL
+============================= */
 body {
-  background: #f4f6f8;
-  color: #333;
-  line-height: 1.6;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
 }
 
-/* ===============================
-   HEADER & MENU
-================================ */
+h1, h2 {
+    text-align: center;
+    color: #333;
+}
+
+/* =============================
+   HEADER ET NAVIGATION
+============================= */
 header {
-  background: #0a58ca;
-  color: white;
-  padding: 15px 20px;
-}
-
-header h1 {
-  font-size: 24px;
-  margin-bottom: 10px;
+    background-color: #ff4d4d;
+    color: white;
+    padding: 10px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-nav a {
-  color: white;
-  text-decoration: none;
-  padding: 8px 14px;
-  border-radius: 6px;
-  background: rgba(255,255,255,0.15);
-  transition: 0.3s;
-}
-
-nav a:hover {
-  background: white;
-  color: #0a58ca;
-}
-
-/* ===============================
-   BOUTONS
-================================ */
-.btn {
-  display: inline-block;
-  background: #198754;
-  color: white;
-  padding: 10px 18px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: bold;
-  margin: 5px 0;
-  transition: 0.3s;
-}
-
-.btn:hover {
-  background: #146c43;
-}
-
-/* ===============================
-   CONTENU PRINCIPAL
-================================ */
-main {
-  padding: 20px;
-  max-width: 1100px;
-  margin: auto;
-}
-
-section {
-  margin-bottom: 30px;
-}
-
-/* ===============================
-   CARTES (TRAJETS, AVIS)
-================================ */
-.carte {
-  background: white;
-  padding: 15px;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-  margin-bottom: 15px;
-}
-
-.carte p {
-  margin-bottom: 6px;
-}
-
-/* ===============================
-   FORMULAIRES
-================================ */
-form {
-  background: white;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-  max-width: 500px;
-  margin: auto;
-}
-
-form h2 {
-  margin-bottom: 15px;
-  text-align: center;
-  color: #0a58ca;
-}
-
-label {
-  display: block;
-  margin-top: 12px;
-  font-weight: bold;
-}
-
-input, textarea, select {
-  width: 100%;
-  padding: 10px;
-  margin-top: 5px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-}
-
-input:focus, textarea:focus {
-  outline: none;
-  border-color: #0a58ca;
-}
-
-button {
-  margin-top: 20px;
-  width: 100%;
-  padding: 12px;
-  background: #0a58ca;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-button:hover {
-  background: #084298;
-}
-
-/* ===============================
-   AVIS VISITEURS
-================================ */
-#listeAvis .carte {
-  border-left: 5px solid #198754;
-}
-
-/* ===============================
-   FOOTER
-================================ */
-footer {
-  background: #212529;
-  color: white;
-  text-align: center;
-  padding: 15px;
-  margin-top: 40px;
-}
-
-/* ===============================
-   RESPONSIVE (MOBILE)
-================================ */
-@media (max-width: 768px) {
-  nav {
-    flex-direction: column;
-  }
-
-  header h1 {
-    text-align: center;
-  }
-
-  main {
-    padding: 15px;
-  }
-}
-/* ===============================
-   MENU HAMBURGER
-================================ */
-.menu-toggle {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-  gap: 5px;
-}
-
-.menu-toggle .bar {
-  width: 25px;
-  height: 3px;
-  background-color: white;
-  border-radius: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .nav-list {
-  display: flex;
-  gap: 10px;
-  list-style: none;
+    list-style: none;
+    display: flex;
+    padding: 0;
+}
+
+.nav-list li {
+    margin: 0 10px;
 }
 
 .nav-list li a {
-  display: block;
-}
-
-/* RESPONSIVE */
-@media (max-width: 768px) {
-  .menu-toggle {
-    display: flex;
-  }
-
-  .nav-list {
-    position: absolute;
-    top: 60px;
-    left: -100%;
-    width: 100%;
-    flex-direction: column;
-    background-color: #0a58ca;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px 10px;
     transition: 0.3s;
-  }
-
-  .nav-list.active {
-    left: 0;
-  }
-
-  .nav-list li {
-    text-align: center;
-    margin: 10px 0;
-  }
 }
+
+.nav-list li a:hover, .nav-list li a.btn {
+    background-color: white;
+    color: #ff4d4d;
+    border-radius: 5px;
+}
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+.bar {
+    height: 3px;
+    width: 25px;
+    background-color: white;
+    margin: 4px 0;
+    transition: 0.3s;
+}
+
+/* =============================
+   MAIN
+============================= */
+main {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 0 10px;
+}
+
+form {
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+form input, form textarea, form button {
+    width: 100%;
+    margin: 5px 0 15px 0;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+form button {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #e60000;
+}
+
+/* =============================
+   LISTE DES TRAJETS ET CARTE
+============================= */
+.carte {
+    background-color: white;
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.carte p {
+    margin: 5px 0;
+}
+
 .miniature {
     width: 50px;
     height: 50px;
@@ -242,4 +128,45 @@ footer {
     object-fit: cover;
     float: right;
     margin-left: 10px;
+}
+
+.image-demo {
+    width: 100%;
+    max-width: 600px;
+    display: block;
+    margin: 10px auto;
+    border-radius: 10px;
+}
+
+/* =============================
+   FOOTER
+============================= */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+/* =============================
+   RESPONSIVE
+============================= */
+@media (max-width: 768px) {
+    .nav-list {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+    }
+    .nav-list.active {
+        display: flex;
+    }
+    .menu-toggle {
+        display: flex;
+    }
+    .nav-list li {
+        margin: 10px 0;
+    }
 }
