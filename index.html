@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Covoiturage + 🚘</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+</head>
+<body>
+
+<header>
+    <nav class="menu">
+        <h1>Covoiturage + 🚘</h1>
+        <ul>
+    <li><a href="index.html"><i class="fas fa-home"></i> Accueil</a></li>
+    <li><a href="publier-trajet.html"><i class="fas fa-plus-circle"></i> Publier un trajet</a></li>
+    <li><a href="liste-trajets.html"><i class="fas fa-list"></i> Liste des trajets</a></li>
+    <li><a href="rechercher.html"><i class="fas fa-search"></i> Recherche trajet</a></li>
+    <li><a href="index.html" id="deconnexion"><i class="fas fa-sign-out-alt"></i> Déconnexion</a></li>
+</ul>
+
+    </nav>
+</header>
+
+<main>
+    <section class="avantages">
+    <h2>Bienvenue sur Covoiturage + 🚘</h2>
+    <p>Économisez sur vos déplacements, rencontrez de nouvelles personnes et réduisez votre empreinte carbone.</p>
+    <div class="images-illustration">
+        <img src="images/covoiturage1.jpg" alt="Covoiturage 1">
+        <img src="images/covoiturage2.jpg" alt="Covoiturage 2">
+        <img src="images/covoiturage3.jpg" alt="Covoiturage 3">
+    </div>
+</section>
+
+
+    <section class="avis">
+        <h2>Avis des visiteurs</h2>
+        <form id="formAvis">
+            <input type="text" id="nomAvis" placeholder="Votre nom" required>
+            <textarea id="messageAvis" placeholder="Votre avis" required></textarea>
+            <button type="submit">Envoyer</button>
+        </form>
+        <div id="listeAvis" style="margin-top:20px;"></div>
+    </section>
+</main>
+
+<script src="js/app.js"></script>
+</body>
+</html>

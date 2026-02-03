@@ -1,0 +1,138 @@
+/* Styles généraux */
+body {
+    font-family: Arial, sans-serif;
+    margin:0;
+    padding:0;
+    background: #f4f4f4;
+}
+
+.menu {
+    background: #007bff;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu h1 {
+    margin: 0;
+}
+
+.menu ul {
+    display: flex;
+    list-style: none;
+    gap: 15px;
+    margin: 0;
+    padding: 0;
+}
+
+.menu ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.menu ul li a:hover {
+    text-decoration: underline;
+}
+
+main {
+    padding: 20px;
+}
+
+.formulaire, .avis {
+    background: white;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.formulaire input, .formulaire textarea, .avis input, .avis textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.formulaire button, .avis button {
+    width: 100%;
+    margin-top: 15px;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.formulaire button { background: #007bff; color: white; }
+.formulaire button:hover { background: #0056b3; }
+
+.avis button { background: #28a745; color: white; }
+.avis button:hover { background: #218838; }
+
+.trajets {
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+.trajets .carte, #listeAvis .carte {
+    background: #e8f0fe;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+    .menu ul { flex-direction: column; gap: 10px; }
+    .formulaire, .avis { margin: 15px; padding: 15px; }
+}
+/* Images illustration */
+.images-illustration {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+.images-illustration img {
+    width: 250px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: transform 0.3s;
+}
+
+.images-illustration img:hover {
+    transform: scale(1.05);
+}
+
+/* Dégradé pour header */
+.menu {
+    background: linear-gradient(90deg, #007bff, #00c6ff);
+}
+
+/* Cartes trajets et avis modernisées */
+.trajets .carte, #listeAvis .carte {
+    background: #ffffff;
+    border-left: 5px solid #007bff;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.trajets .carte:hover, #listeAvis .carte:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+}
+@media screen and (max-width: 768px) {
+    .images-illustration img { width: 100%; max-width: 300px; }
+    .menu ul { flex-direction: column; gap: 10px; text-align: center; }
+    .formulaire, .avis { padding: 15px; margin: 10px; }
+}
